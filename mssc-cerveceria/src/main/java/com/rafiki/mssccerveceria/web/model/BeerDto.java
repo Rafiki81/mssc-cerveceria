@@ -1,19 +1,23 @@
 package com.rafiki.mssccerveceria.web.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
+
 //Lombok annotations
-@Data //Getters,Setters,hashcodes...
-@NoArgsConstructor //Creates a No args Constructor
-@Builder //Implement the builder Pattern
-public class BeerDto {
+//Getters,Setters,hashcodes...
+//Creates a No args Constructor
+//Implement the builder Pattern
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class BeerDto{
 
     private UUID id;
     private String beerName;
     private String beerStyle;
-    private long upc;
+    private Long upc;
+
 
 }
