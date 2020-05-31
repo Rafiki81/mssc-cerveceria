@@ -20,11 +20,11 @@ public class BeerController {
     }
 
     @GetMapping({"/{beerId}"})
-    public ResponseEntity<BeerDto> getBeer(UUID beerId){
+    public ResponseEntity<BeerDto> getBeer(@PathVariable UUID beerId){
         return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
     }
     @PostMapping
-    public ResponseEntity handlePost(BeerDto beerDto){
+    public ResponseEntity handlePost(@RequestBody BeerDto beerDto){
         BeerDto savedDto = beerService.saveNewBeer(beerDto);
         HttpHeaders headers = new HttpHeaders();
         headers.add("location","http://localhost:8080/api/v0/beer/" + savedDto.getBeerId().toString());
