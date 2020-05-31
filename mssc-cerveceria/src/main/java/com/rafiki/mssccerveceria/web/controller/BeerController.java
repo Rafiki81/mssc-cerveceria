@@ -5,10 +5,7 @@ import com.rafiki.mssccerveceria.web.services.BeerService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -28,11 +25,17 @@ public class BeerController {
     }
     @PostMapping
     public ResponseEntity handlePost(BeerDto beerDto){
-
         BeerDto savedDto = beerService.saveNewBeer(beerDto);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("location","http://localhost:8080//api/v0/beer/" + savedDto.getId().toString());
+        headers.add("location","http://localhost:8080/api/v0/beer/" + savedDto.getBeerId().toString());
         return new ResponseEntity(headers,HttpStatus.CREATED);
+    }
+    @PutMapping({"/{beerId}"})
+    public ResponseEntity handleUpdate(@PathVariable("beerId") UUID beerId,BeerDto beerDto){
+
+        beerService.updateBeer(beerId,beerDto);
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT); //204 succesfull
 
     }
 
