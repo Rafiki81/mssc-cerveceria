@@ -12,7 +12,7 @@ import java.util.UUID;
 public class BeerDto {
 
     private UUID id;
-    private String name;
+    private String beerName;
     private String beerStyle;
     private long upc;
 
