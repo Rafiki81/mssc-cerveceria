@@ -1,6 +1,6 @@
 package com.rafiki.mssccerveceria.web.controller;
 
-import com.rafiki.mssccerveceria.web.model.BeerDto;
+
 import com.rafiki.mssccerveceria.web.model.CustomerDto;
 import com.rafiki.mssccerveceria.web.services.CustomerService;
 import org.springframework.http.HttpStatus;
